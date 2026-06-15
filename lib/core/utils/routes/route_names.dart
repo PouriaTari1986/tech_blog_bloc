@@ -1,22 +1,39 @@
 
 
 
-abstract class Routes {
+abstract class NamedScreen {
 
-  static const splashScreen = "/";
+  static const String splashScreen = "/";
 
-  static const homeScreen = "/homeScreen";
+  static const String homeScreen = "/homeScreen";
 
-  static const articleList = "/articleList";
+  static const String articleList = "/articleList";
 
-  static const articleInfo = "/articleInfo";
+  static const String articleInfo = "/articleInfo";
 
-  static const podcastList = "/podcatsList";
+  static const String podcastList = "/podcatsList";
 
-  static const podcastInfo = "/podcatsInfo";
+  static const String podcastInfo = "/podcatsInfo";
 
-  static const newArticle = "/newArticle";
+  static const String newArticle = "/newArticle";
 
-  static const newPodcast = "/newPodcast";
+  static const String newPodcast = "/newPodcast";
+
+
+  static const String splashScreenName = "splashScreenName";
+
+  static const String homeScreenName = "homeScreenName";
+
+  static const String articleListName = "articleListName";
+
+  static const String articleInfoName = "articleInfoName";
+
+  static const String podcastListName = "podcastListName";
+
+  static const String podcastInfoName = "podcastInfoName";
+
+  static const String newArticleName = "newArticleName";
+
+  static const String newPodcastName = "newPodcastName";
 
 }
