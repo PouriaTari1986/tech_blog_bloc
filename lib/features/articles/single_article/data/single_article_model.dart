@@ -5,11 +5,29 @@ class SingleArticleModel extends SingleArticleEntity{
 
  // ignore: use_super_parameters
  const SingleArticleModel({  
-  Info? info,
+  String? id,
+  String? title,
+  String? content,
+  String? image,
+  String? catId,
+  String? catName,
+  String? author,
+  String? view,
+  String? status,
+  String? createdAt,
   bool? isFavorite,
   List<Related>? related,
   List<Tags>? tags,}):super(
-    info: info,
+    id: id,
+    title: title,
+    content: content,
+    image: image,
+    catId: catId,
+    catName: catName,
+    author: author,
+    view: view,
+    status: status,
+    createdAt: createdAt,
     isFavorite: isFavorite,
     related: related,
     tags: tags
@@ -30,7 +48,16 @@ class SingleArticleModel extends SingleArticleEntity{
       });
     }
     return SingleArticleModel(
-      info: json['info'] != null ? Info.fromJson(json['info']) : null,
+      id: json['info']['id'] ,
+      title: json['info']['title'],
+      image: json['info']['image'],
+      content: json['info']['content'],
+      catId: json['info']['cat_id'],
+      catName: json['info']['cat_name'],
+      author: json['info']['author'],
+      view: json['info']['view'],
+      status: json['info']['status'],
+      createdAt: json['info']['created_at'] ,
       isFavorite: json['isFavorite'],
       related: related,
       tags: tags
@@ -42,73 +69,10 @@ class SingleArticleModel extends SingleArticleEntity{
 
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (info != null) {
-      data['info'] = info!.toJson();
-    }
-    data['isFavorite'] = isFavorite;
-    if (related != null) {
-      data['related'] = related!.map((v) => v.toJson()).toList();
-    }
-    if (tags != null) {
-      data['tags'] = tags!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
 
-class Info {
-  String? id;
-  String? title;
-  String? content;
-  String? image;
-  String? catId;
-  String? catName;
-  String? author;
-  String? view;
-  String? status;
-  String? createdAt;
 
-  Info(
-      {this.id,
-      this.title,
-      this.content,
-      this.image,
-      this.catId,
-      this.catName,
-      this.author,
-      this.view,
-      this.status,
-      this.createdAt});
 
-  Info.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    content = json['content'];
-    image = json['image'];
-    catId = json['cat_id'];
-    catName = json['cat_name'];
-    author = json['author'];
-    view = json['view'];
-    status = json['status'];
-    createdAt = json['created_at'];
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = title;
-    data['content'] = content;
-    data['image'] = image;
-    data['cat_id'] = catId;
-    data['cat_name'] = catName;
-    data['author'] = author;
-    data['view'] = view;
-    data['status'] = status;
-    data['created_at'] = createdAt;
-    return data;
-  }
 }
 
 class Related {
