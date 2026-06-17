@@ -3,69 +3,64 @@ import 'package:tech_bloc/features/home/domain/home_entity.dart';
 class HomeModel extends HomeEntity{
 
 
-
   const HomeModel(
       {  
   super.poster,
   super.topVisited,
   super.topPodcasts,
   super.tags,
-     });
+  super.categories,});
 
- factory HomeModel.fromJson(Map<String, dynamic> json) {
-
-
-  List<TopVisited>  topVisited = <TopVisited>[];
-  if (json['top_visited'] != null) {
-      json['top_visited'].forEach((v) {
-        topVisited.add(TopVisited.fromJson(v));
-      });}
-    List<TopPodcasts>  topPodcasts = <TopPodcasts>[];
-      if (json['top_podcasts'] != null) {
-      
-      json['top_podcasts'].forEach((v) {
-        topPodcasts.add(TopPodcasts.fromJson(v));
-      });}
-
-        List<Tags>  tags = <Tags>[];
-        if (json['tags'] != null) {
+  factory HomeModel.fromJson(Map<String, dynamic> json) {
+     List<Tags> tags = <Tags>[];
+    if (json['tags'] != null) {
       json['tags'].forEach((v) {
         tags.add(Tags.fromJson(v));
       });
-    
+    }
+     List<Categories>  categories = <Categories>[];
+    if (json['categories'] != null) {    
+      json['categories'].forEach((v) {
+        categories.add(Categories.fromJson(v));
+      });
+    }
+      List<TopPodcasts> topPodcasts = <TopPodcasts>[];
+      if (json['top_podcasts'] != null) {     
+      json['top_podcasts'].forEach((v) {
+        topPodcasts.add(TopPodcasts.fromJson(v));
+      });
+    }
+    List<TopVisited>  topVisited = <TopVisited>[];
+    if (json['top_visited'] != null) {
+      json['top_visited'].forEach((v) {
+        topVisited.add(TopVisited.fromJson(v));
+      });
     }
 
-  return HomeModel(
-    poster: json['poster'] != null ? Poster.fromJson(json['poster']) : null,
-    topVisited: topVisited,
-    topPodcasts: topPodcasts,
-    tags:tags
-  );
+
+    return HomeModel(
+      poster: json['poster'] != null ? Poster.fromJson(json['poster']) : null,
+      tags: tags,
+      categories: categories,
+      topPodcasts: topPodcasts,
+      topVisited:topVisited
+    );  
     
-    
-
-
-
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (poster != null) {
-      data['poster'] = poster!.toJson();
-    }
-    if (topVisited != null) {
-      data['top_visited'] = topVisited!.map((v) => v.toJson()).toList();
-    }
-    if (topPodcasts != null) {
-      data['top_podcasts'] = topPodcasts!.map((v) => v.toJson()).toList();
-    }
-    if (tags != null) {
-      data['tags'] = tags!.map((v) => v.toJson()).toList();
-    }
-   
-    return data;
+}
+
+class Categories {
+  String? id;
+  String? title;
+
+  Categories({this.id,this.title});
+
+  Categories.fromJson(Map<String,dynamic> json){
+    id = json["id"];
+    title = json["title"];
   }
- }
+}
 
 class Poster {
   String? id;

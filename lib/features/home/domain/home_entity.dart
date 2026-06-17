@@ -8,13 +8,14 @@ class HomeEntity extends Equatable{
   final List<TopVisited>? topVisited;
   final List<TopPodcasts>? topPodcasts;
   final List<Tags>? tags;
+  final List<Categories>? categories;
 
-  const HomeEntity({this.poster, this.topVisited, this.topPodcasts, this.tags});
+  const HomeEntity({this.poster, this.topVisited, this.topPodcasts, this.tags,this.categories});
 
 
 
   @override
   List<Object?> get props => [
-    poster,topVisited,topPodcasts,tags
+    poster,topVisited,topPodcasts,tags,categories
   ];
 }

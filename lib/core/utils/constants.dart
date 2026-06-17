@@ -8,5 +8,5 @@ class Constants {
 
   static const baseUrlPodcast = "https://techblog.sasansafari.com/Techblog/api/podcast/";
 
-  
+  static const homeUrl = "https://techblog.sasansafari.com/Techblog/api/home/";
 }
