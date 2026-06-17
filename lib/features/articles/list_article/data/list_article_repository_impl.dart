@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:tech_bloc/core/error/error_handler.dart';
 import 'package:tech_bloc/features/articles/list_article/data/list_article_data_source.dart';
 import 'package:tech_bloc/features/articles/list_article/data/list_article_model.dart';
@@ -20,8 +21,10 @@ class ListArticleRepositoryImpl extends ListArticleRepository {
           .toList();
 
       return DataSuccess<List<ListArticleEntity>>(articles);
-    } catch (e) {
-      return DataFailure<List<ListArticleEntity>>(e.toString());
+
+      
+    }on DioException catch (e) {
+      return DataFailure(e.message.toString());
     }
   }
 }

@@ -2,6 +2,7 @@
 
 
 
+import 'package:dio/dio.dart';
 import 'package:tech_bloc/core/error/error_handler.dart';
 import 'package:tech_bloc/features/articles/single_article/data/single_article_data_source.dart';
 import 'package:tech_bloc/features/articles/single_article/data/single_article_model.dart';
@@ -28,8 +29,9 @@ class SingleArticleRepositoryImpl extends SingleArticleRepository {
       return DataSuccess(article);
       
       
-    } catch (e) {
-      return DataFailure("error");
+    }on DioException
+     catch (e) {
+      return DataFailure(e.message.toString());
     }
 
   }

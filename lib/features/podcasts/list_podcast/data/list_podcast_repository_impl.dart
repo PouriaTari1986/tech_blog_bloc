@@ -2,6 +2,7 @@
 
 
 
+import 'package:dio/dio.dart';
 import 'package:tech_bloc/core/error/error_handler.dart';
 import 'package:tech_bloc/features/podcasts/list_podcast/data/list_podcast_data_source.dart';
 import 'package:tech_bloc/features/podcasts/list_podcast/data/list_podcast_model.dart';
@@ -24,8 +25,9 @@ class ListPodcastRepositoryImpl implements ListPodcastRepository {
       final podcasts = (response).map((e)=>ListPodcastModel.fromJson(e)).toList();
 
       return DataSuccess<List<ListPodcastEntity>>(podcasts);
-    } catch (e) {
-      return DataFailure("error");
+      
+    }on DioException catch (e) {
+      return DataFailure(e.message.toString());
     }
   }
 }
