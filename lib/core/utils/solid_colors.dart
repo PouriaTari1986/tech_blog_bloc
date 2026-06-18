@@ -33,4 +33,18 @@ class GradiantsColors{
        Color.fromARGB(255, 6, 6, 6),
        Color.fromARGB(255, 60, 60, 60),
   ];
+
+  static const List<Color> poster =[
+       Color.fromARGB(0, 40, 41, 46),
+       Color.fromARGB(195, 72, 20, 88),
+       Color.fromARGB(255, 28, 20, 81),
+       
+  ];
+
+  static const List<Color> topVisited =[
+       Color.fromARGB(0, 255, 255, 255),
+       Color.fromARGB(255, 0, 0, 0),
+       
+       
+  ];
 }

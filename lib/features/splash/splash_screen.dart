@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen>{
     Future.delayed(Duration(seconds: 2),
     (){
       if (mounted) {
-        context.pushNamed(NamedScreen.homeScreenName);
+        context.pushReplacementNamed(NamedScreen.homeScreenName);
       } 
     }
     );
