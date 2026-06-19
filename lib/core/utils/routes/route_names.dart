@@ -19,7 +19,14 @@ abstract class NamedScreen {
 
   static const String newPodcast = "/newPodcast";
 
+  static const String userSreen = "/userScreen";
 
+  static const String registerIntro = "/regiterIntro";
+
+
+
+
+//named screen
   static const String splashScreenName = "splashScreenName";
 
   static const String homeScreenName = "homeScreenName";
@@ -35,5 +42,9 @@ abstract class NamedScreen {
   static const String newArticleName = "newArticleName";
 
   static const String newPodcastName = "newPodcastName";
+
+  static const String userScreenName = "userScreenName";
+
+  static const String registerIntoName = "registerIntoName";
 
 }

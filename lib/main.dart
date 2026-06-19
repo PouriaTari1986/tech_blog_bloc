@@ -10,7 +10,7 @@ void main() async {
    setup();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(statusBarColor: Colors.white),
+    SystemUiOverlayStyle(statusBarBrightness: .light),
   );
   runApp(
     BlocProvider(

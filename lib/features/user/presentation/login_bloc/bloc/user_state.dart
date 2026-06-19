@@ -1,4 +1,4 @@
-part of 'login_bloc.dart';
+part of 'user_bloc.dart';
 
 sealed class LoginState extends Equatable {
   const LoginState();

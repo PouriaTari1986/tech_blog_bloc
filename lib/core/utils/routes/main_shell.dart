@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tech_bloc/core/utils/routes/route_names.dart';
 import 'package:tech_bloc/core/utils/solid_colors.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
 
@@ -56,19 +58,19 @@ class MainShell extends StatelessWidget {
 
                     IconButton(
                       onPressed: () {
-                        
+                        context.goNamed(NamedScreen.homeScreenName);
                       },
                       icon:  Assets.images.home.image(scale: 2)),
 
                     IconButton(
                       onPressed: () {
-                        
+                        context.goNamed(NamedScreen.registerIntoName);
                       },
                       icon: Assets.images.register.image(scale: 2)),
 
                     IconButton(
                       onPressed: () {
-                        
+                        context.goNamed(NamedScreen.userScreenName);
                       },
                       
                       icon: Assets.images.user.image(scale: 2)),

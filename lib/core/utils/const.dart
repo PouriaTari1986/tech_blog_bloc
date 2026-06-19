@@ -99,4 +99,12 @@ class AppStrings {
 
   static const String chooseCat = "دسته بندی هایی که دوست داری رو انتخاب کن";
 
+  static const String editProfilePic = "ویرایش عکس پروفایل";
+
+  static const String logOutText = "خروج از حساب کاربری";
+
+  static const String myFavPodcastas = "پادکست های مورد علاقه من";
+
+  static const String myFavArticles = "مقالات مورد علاقه من";
+
 }

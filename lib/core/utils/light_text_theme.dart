@@ -8,16 +8,30 @@ class LightTextTheme {
 
   static const TextStyle bannerTextBold = TextStyle(
     fontFamily: 'Dana',
-    fontSize: 16,
+    fontSize: 15,
     color: SolidColors.banerBoldText,
     fontWeight: FontWeight.normal
   );
 
   static const TextStyle bannerTexrNormal = TextStyle(
     fontFamily: 'Dana',
-    fontSize: 13,
+    fontSize: 20,
     color: SolidColors.banerBoldText ,
     fontWeight: FontWeight.normal
+  );
+
+  static const TextStyle elevatedTextOnPressed = TextStyle(
+    fontFamily: 'Dana',
+    fontSize: 25,
+    color: SolidColors.banerBoldText ,
+    fontWeight: FontWeight.bold
+  );
+
+  static const TextStyle elevatedText = TextStyle(
+    fontFamily: 'Dana',
+    fontSize: 15,
+    color: SolidColors.banerBoldText ,
+    fontWeight: FontWeight.bold
   );
 
   static const TextStyle blueText = TextStyle(
@@ -30,6 +44,13 @@ class LightTextTheme {
   static const TextStyle detailText = TextStyle(
     fontFamily: 'Dana',
     fontSize: 13,
+    color: SolidColors.blackColor,
+    fontWeight: FontWeight.bold
+  );
+
+  static const TextStyle userText = TextStyle(
+    fontFamily: 'Dana',
+    fontSize: 14,
     color: SolidColors.blackColor,
     fontWeight: FontWeight.bold
   );
@@ -74,6 +95,13 @@ class LightTextTheme {
     fontFamily: 'Dana',
     fontSize: 14,
     color: SolidColors.selectedPodColor,
+    fontWeight: FontWeight.bold
+  );
+
+  static const TextStyle welcomeText = TextStyle(
+    fontFamily: 'Dana',
+    fontSize: 16,
+    color: SolidColors.welocomeColor,
     fontWeight: FontWeight.bold
   );
 }

@@ -11,6 +11,8 @@ class SolidColors {
 
   static const Color blueColor = Color.fromARGB(255, 40, 107, 184);
 
+  static const Color elevetedTextColor = Color.fromARGB(255, 255, 255, 255);
+
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);
 
   static const Color greyColor = Color.fromARGB(255, 97, 97, 97);
@@ -20,6 +22,10 @@ class SolidColors {
   static const Color listHeadColor = Color.fromARGB(255, 66, 4, 87);
 
   static const Color selectedPodColor = Color.fromARGB(255, 255, 139, 26);
+
+  static const Color dividerColor = Color.fromARGB(255, 112, 112, 112);
+
+  static const Color welocomeColor = Color.fromARGB(255, 107, 107, 107);
 }
 
 class GradiantsColors{

@@ -8,6 +8,8 @@ import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/authen
 import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
 import 'package:tech_bloc/features/home/presentation/home_pages/home_screen.dart';
 import 'package:tech_bloc/features/splash/splash_screen.dart';
+import 'package:tech_bloc/features/user/presentation/login_pages/register_intro_screen.dart';
+import 'package:tech_bloc/features/user/presentation/login_pages/user_screen.dart';
 import 'package:tech_bloc/injections.dart';
 
 final routes = GoRouter(
@@ -36,20 +38,30 @@ final routes = GoRouter(
             child: const HomeScreen(),
           ),
         ),
+        GoRoute(
+          path: NamedScreen.userSreen,
+          name: NamedScreen.userScreenName,
+          builder: (context, state) => UserScreen(),
+        ),
       ],
     ),
     GoRoute(
       path: NamedScreen.articleList,
       name: NamedScreen.articleListName,
-      
+
       builder: (context, state) {
         final title = state.extra as String;
-       return  BlocProvider(
-        create: (context) => locator<ListArticlesBloc>(),
-        child: ListArticleScreen(text: title),
-      );
-      
-      
-   } )
+        return BlocProvider(
+          create: (context) => locator<ListArticlesBloc>(),
+          child: ListArticleScreen(text: title),
+        );
+      },
+    ),
+    GoRoute(
+      path: NamedScreen.registerIntro,
+      name: NamedScreen.registerIntoName,
+
+      builder: (context, state) => RegisterItroScreen(),
+    ),
   ],
 );
