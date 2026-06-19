@@ -10,6 +10,13 @@ import 'package:tech_bloc/features/articles/single_article/data/single_article_r
 import 'package:tech_bloc/features/articles/single_article/domain/single_article_repository.dart';
 import 'package:tech_bloc/features/articles/single_article/domain/single_article_use_cases.dart';
 import 'package:tech_bloc/features/articles/single_article/presentation/single_article_bloc/bloc/article_info_bloc.dart';
+import 'package:tech_bloc/features/authentication/data/data_source/auth_data_source.dart';
+import 'package:tech_bloc/features/authentication/data/data_source/auth_local_data_source.dart';
+import 'package:tech_bloc/features/authentication/data/repository/auth_repository_impl.dart';
+import 'package:tech_bloc/features/authentication/domain/auth_repository.dart';
+import 'package:tech_bloc/features/authentication/domain/auth_use_case.dart';
+import 'package:tech_bloc/features/authentication/domain/code_use_case.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/authentication_cubit.dart';
 import 'package:tech_bloc/features/home/data/home_data_source.dart';
 import 'package:tech_bloc/features/home/data/home_repository_impl.dart';
 import 'package:tech_bloc/features/home/domain/home_repository.dart';
@@ -24,9 +31,19 @@ import 'package:tech_bloc/features/podcasts/list_podcast/presentation/list_podca
 GetIt locator = GetIt.instance;
 
  // ignore: strict_top_level_inference
- setup(){
+ setup()async{
 
   locator.registerSingleton<Dio>(Dio());
+
+  ///share prefrences
+
+
+
+  locator.registerLazySingleton<AuthLocalDataSource>(
+    () => AuthLocalDataSource(),
+  );
+
+
 
   ///Api Providers
   locator.registerSingleton<HomeDataSource>(HomeDataSource(dio: locator()));
@@ -35,7 +52,7 @@ GetIt locator = GetIt.instance;
   locator.registerFactory<SingleArticleDataSource>(()=>SingleArticleDataSource(dio: locator()));
   locator.registerSingleton<ListArticleDataSource>(ListArticleDataSource(dio: locator()));
   locator.registerFactory<SingleArticleDataSource>(()=>SingleArticleDataSource(dio: locator()));
-
+  locator.registerFactory<AuthDataSource>(()=>AuthDataSource(locator()));
 
 
   ///repositoris
@@ -43,6 +60,7 @@ GetIt locator = GetIt.instance;
   locator.registerSingleton<ListPodcastRepository>(ListPodcastRepositoryImpl(apiProvider: ListPodcastDataSource(dio: locator())));
   locator.registerSingleton<SingleArticleRepository>(SingleArticleRepositoryImpl(apiProvider: locator()));
   locator.registerSingleton<ListArticleRepository>(ListArticleRepositoryImpl(apiProvider: locator(), useId: ''));
+  locator.registerSingleton<AuthRepository>(AuthRepositoryImpl(locator()));
 
 
   ///use cases
@@ -50,6 +68,8 @@ GetIt locator = GetIt.instance;
   locator.registerSingleton<ListPodcastUseCases>(ListPodcastUseCases(listPodcastRepository: locator()));
   locator.registerSingleton<SingleArticleUseCases>(SingleArticleUseCases(singleArticleRepository: locator()));
   locator.registerSingleton<ListArticleUseCases>(ListArticleUseCases(listArticleRepository: locator()));
+  locator.registerSingleton<RegisterEmailUseCase>(RegisterEmailUseCase(locator()));
+  locator.registerSingleton<VerifyCodeUseCase>(VerifyCodeUseCase(locator()));
 
 
 
@@ -58,6 +78,7 @@ GetIt locator = GetIt.instance;
   locator.registerFactory<ListPodcatsBloc>(()=>ListPodcatsBloc(locator()));
   locator.registerFactory<ArticleInfoBloc>(()=>ArticleInfoBloc(locator()));
   locator.registerFactory<ListArticlesBloc>(()=>ListArticlesBloc(locator()));
+  locator.registerFactory<AuthCubit>(()=>AuthCubit(locator(), locator(), locator()));
   
 
 
