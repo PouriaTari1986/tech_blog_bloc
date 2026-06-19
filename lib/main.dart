@@ -7,7 +7,7 @@ import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bl
 import 'package:tech_bloc/injections.dart';
 
 void main() async {
-  await setup();
+   setup();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.white),

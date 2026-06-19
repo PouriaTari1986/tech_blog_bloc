@@ -9,14 +9,14 @@ part 'list_articles_state.dart';
 class ListArticlesBloc extends Bloc<ListArticlesEvent, ListArticlesState> {
   ListArticleUseCases listArticleUseCases;
   ListArticlesBloc(this.listArticleUseCases) : super(ListArticlesState(listArticleStatus: ListArticleLoading())) {
-    on<ListArticlesEvent>((event, emit) async{
+    on<ListArticleLoadEvent>((event, emit) async{
       emit(state.copyWith(ListArticleLoading()));
 
 
-      DataState dataState = await listArticleUseCases("");
+      DataState dataState = await listArticleUseCases(event.type);
 
       if (dataState is DataSuccess) {
-        emit(state.copyWith(ListArticleLoaded(listArticleEntity: dataState.data)));
+        emit(state.copyWith((ListArticleLoaded(articles: dataState.data??[]))));
       }
       if (dataState is DataFailure) {
         emit(state.copyWith(ListArticleError(message: 'A Problem Accured')));

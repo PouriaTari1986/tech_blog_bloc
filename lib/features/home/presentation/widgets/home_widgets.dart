@@ -29,31 +29,36 @@ SizedBox homePodcasts(
                   index == 0 ? size.width / 10 : 15,
                   0,
                 ),
-                child: Container(
-                  width: size.width / 2.4,
-                  height: size.height / 5.5,
-
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  foregroundDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    gradient: LinearGradient(
-                      colors: GradiantsColors.topVisited,
-                      begin: .topCenter,
-                      end: .bottomCenter,
+                child: InkWell(
+                  onTap: () {
+                    
+                  },
+                  child: Container(
+                    width: size.width / 2.4,
+                    height: size.height / 5.5,
+                  
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        Constants.hostDl+podcast[index].poster!,
-
-                    placeholder: (context, url) =>
-                           CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                     
-                        Assets.images.singlePlaceHolder.image(),
-                    fit: .cover,
+                    foregroundDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      gradient: LinearGradient(
+                        colors: GradiantsColors.topVisited,
+                        begin: .topCenter,
+                        end: .bottomCenter,
+                      ),
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          Constants.hostDl+podcast[index].poster!,
+                  
+                      placeholder: (context, url) =>
+                             CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                       
+                          Assets.images.singlePlaceHolder.image(),
+                      fit: .cover,
+                    ),
                   ),
                 ),
               ),
@@ -104,31 +109,36 @@ SizedBox homePodcasts(
                 ),
                 child: Stack(
                   children: [
-                    Container(
-                      width: size.width / 2.4,
-                      height: size.height / 5.5,
-
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      foregroundDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(16)),
-                        gradient: LinearGradient(
-                          colors: GradiantsColors.topVisited,
-                          begin: .topCenter,
-                          end: .bottomCenter,
+                    InkWell(
+                      onTap: () {
+                        
+                      },
+                      child: Container(
+                        width: size.width / 2.4,
+                        height: size.height / 5.5,
+                      
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                      ),
-                      child: CachedNetworkImage(
-                        imageUrl:
-                            Constants.hostDl+articles[index].image!,
-
-                        placeholder: (context, url) =>
-                        CircularProgressIndicator(),
-                            
-                        errorWidget: (context, url, error) =>
-                            Assets.images.singlePlaceHolder.image(),
-                        fit: .cover,
+                        foregroundDecoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          gradient: LinearGradient(
+                            colors: GradiantsColors.topVisited,
+                            begin: .topCenter,
+                            end: .bottomCenter,
+                          ),
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              Constants.hostDl+articles[index].image!,
+                      
+                          placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                              
+                          errorWidget: (context, url, error) =>
+                              Assets.images.singlePlaceHolder.image(),
+                          fit: .cover,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -180,26 +190,31 @@ SizedBox homePodcasts(
         physics: BouncingScrollPhysics(),
         scrollDirection: .horizontal,
         itemBuilder: (context, index) {
-          return Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadiusDirectional.circular(20),
-              gradient: LinearGradient(
-                colors: GradiantsColors.tags,
-                begin: .centerRight,
-                end: .centerLeft,
-              ),
-            ),
-            child: Row(
-              children: [
-                Assets.images.a1629506.image(height: 16),
-                SizedBox(width: 12),
-                Text(
-                  tags[index].title!,
-                  style: LightTextTheme.bannerTextBold,
+          return InkWell(
+            onTap: () {
+              
+            },
+            child: Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(20),
+                gradient: LinearGradient(
+                  colors: GradiantsColors.tags,
+                  begin: .centerRight,
+                  end: .centerLeft,
                 ),
-              ],
+              ),
+              child: Row(
+                children: [
+                  Assets.images.a1629506.image(height: 16),
+                  SizedBox(width: 12),
+                  Text(
+                    tags[index].title!,
+                    style: LightTextTheme.bannerTextBold,
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -212,20 +227,25 @@ SizedBox homePodcasts(
     Size size) {
     return Stack(
       children: [
-        Container(
-          width: size.width / 1.19,
-          height: size.height / 4.4,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(16)),
-          ),
-          child: CachedNetworkImage(
-            fadeInDuration: Duration(milliseconds: 800),
-            imageUrl:
-                Constants.hostDl+poster.image!,
-            errorWidget: (context, url, error) => CircularProgressIndicator(),
-            placeholder: (context, url) =>
-                Assets.images.group1.image(fit: .cover),
-            fit: .cover,
+        InkWell(
+          onDoubleTap: () {
+            
+          },
+          child: Container(
+            width: size.width / 1.19,
+            height: size.height / 4.4,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(16)),
+            ),
+            child: CachedNetworkImage(
+              fadeInDuration: Duration(milliseconds: 800),
+              imageUrl:
+                  Constants.hostDl+poster.image!,
+              errorWidget: (context, url, error) => CircularProgressIndicator(),
+              placeholder: (context, url) =>
+                  Assets.images.group1.image(fit: .cover),
+              fit: .cover,
+            ),
           ),
         ),
         Container(

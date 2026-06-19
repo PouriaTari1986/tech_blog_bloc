@@ -5,4 +5,6 @@ sealed class HomeEvent {
 
 
 }
-class LoadEvent extends HomeEvent{}
+class LoadEvent extends HomeEvent{
+
+}

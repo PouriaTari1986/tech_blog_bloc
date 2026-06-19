@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tech_bloc/core/utils/const.dart';
+import 'package:tech_bloc/core/utils/light_text_theme.dart';
+import 'package:tech_bloc/core/utils/routes/route_names.dart';
 import 'package:tech_bloc/features/home/domain/home_entities/home_entity.dart';
 import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
 import 'package:tech_bloc/features/home/presentation/home_bloc/home_status.dart';
 import 'package:tech_bloc/features/home/presentation/widgets/home_widgets.dart';
+import 'package:tech_bloc/gen/assets.gen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -72,9 +77,43 @@ class _HomeScreenState extends State<HomeScreen> {
 
           SizedBox(height: size.width / 10),
 
+          InkWell(
+            onTap: () {
+              context.pushNamed(NamedScreen.articleListName,
+              extra: AppStrings.articleList
+              );
+            },
+            child: Padding(
+              padding:  EdgeInsets.fromLTRB(2, 0, size.width/10, 10),
+              child: Row(
+                children: [
+                  Assets.images.write.image(scale: 1.5),
+                  SizedBox(width: 8,),
+                  Text(AppStrings.hottestArticle,style: LightTextTheme.blueText,)
+                ],
+              ),
+            ),
+          ),
+
           homeArticles(homeEntity.topVisited!, size),
 
           SizedBox(height: size.width / 10),
+
+                    InkWell(
+            onTap: () {
+              
+            },
+            child: Padding(
+              padding:  EdgeInsets.fromLTRB(0, 0, size.width/10, 10),
+              child: Row(
+                children: [
+                  Assets.images.podcast.image(scale: 1.5),
+                  SizedBox(width: 8,),
+                  Text(AppStrings.hottestPodcats,style: LightTextTheme.blueText,)
+                ],
+              ),
+            ),
+          ),
 
           homePodcasts(homeEntity.topPodcasts!, size),
 

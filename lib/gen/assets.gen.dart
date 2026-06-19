@@ -44,6 +44,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
 
+  /// File path: assets/images/hvc5cGHF2XlEG5SoVuKPwBNZpBbjyfOaCwwfWf9W.png
+  AssetGenImage get hvc5cGHF2XlEG5SoVuKPwBNZpBbjyfOaCwwfWf9W =>
+      const AssetGenImage(
+        'assets/images/hvc5cGHF2XlEG5SoVuKPwBNZpBbjyfOaCwwfWf9W.png',
+      );
+
   /// File path: assets/images/icon.png
   AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
 
@@ -105,6 +111,7 @@ class $AssetsImagesGen {
     articleWriting,
     circle,
     home,
+    hvc5cGHF2XlEG5SoVuKPwBNZpBbjyfOaCwwfWf9W,
     icon,
     logo,
     podcast,

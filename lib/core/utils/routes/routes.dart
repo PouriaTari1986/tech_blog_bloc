@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tech_bloc/core/utils/routes/main_shell.dart';
 import 'package:tech_bloc/core/utils/routes/route_names.dart';
+import 'package:tech_bloc/features/articles/list_article/presentation/list_article_bloc/bloc/list_articles_bloc.dart';
+import 'package:tech_bloc/features/articles/list_article/presentation/list_article_pages/list_article_screen.dart';
 import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/authentication_cubit.dart';
 import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
 import 'package:tech_bloc/features/home/presentation/home_pages/home_screen.dart';
@@ -25,15 +27,29 @@ final routes = GoRouter(
           name: NamedScreen.homeScreenName,
 
           builder: (context, state) => MultiBlocProvider(
-            
-             providers: [
-              BlocProvider(create: (_) => locator<HomeBloc>()..add(LoadEvent()),),
-              BlocProvider(create: (_) => locator<AuthCubit>())
-             ],
+            providers: [
+              BlocProvider(
+                create: (_) => locator<HomeBloc>()..add(LoadEvent()),
+              ),
+              BlocProvider(create: (_) => locator<AuthCubit>()),
+            ],
             child: const HomeScreen(),
           ),
         ),
       ],
     ),
+    GoRoute(
+      path: NamedScreen.articleList,
+      name: NamedScreen.articleListName,
+      
+      builder: (context, state) {
+        final title = state.extra as String;
+       return  BlocProvider(
+        create: (context) => locator<ListArticlesBloc>(),
+        child: ListArticleScreen(text: title),
+      );
+      
+      
+   } )
   ],
 );

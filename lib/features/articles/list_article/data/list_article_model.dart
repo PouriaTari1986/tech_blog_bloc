@@ -32,6 +32,7 @@ class ListArticleModel extends ListArticleEntity{
   factory ListArticleModel.fromJson(Map<String, dynamic> json) {
 
     return ListArticleModel(
+      image: json['image'],
       view: json['view'],
       id: json['id'],
       title: json['title'],

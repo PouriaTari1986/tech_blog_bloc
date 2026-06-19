@@ -12,12 +12,14 @@ class ListArticleLoading extends ListArticleStatus{}
 
 class ListArticleLoaded extends ListArticleStatus {
 
- final ListArticleEntity listArticleEntity;
+ final List<ListArticleEntity> articles;
   ListArticleLoaded({
-    required this.listArticleEntity,
+    required this.articles,
   });
 
 }
+
+
 class ListArticleError extends ListArticleStatus {
   final String message;
   ListArticleError({

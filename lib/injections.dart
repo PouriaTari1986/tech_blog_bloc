@@ -51,7 +51,6 @@ GetIt locator = GetIt.instance;
   locator.registerSingleton<ListPodcastDataSource>(ListPodcastDataSource(dio: locator()));
   locator.registerFactory<SingleArticleDataSource>(()=>SingleArticleDataSource(dio: locator()));
   locator.registerSingleton<ListArticleDataSource>(ListArticleDataSource(dio: locator()));
-  locator.registerFactory<SingleArticleDataSource>(()=>SingleArticleDataSource(dio: locator()));
   locator.registerFactory<AuthDataSource>(()=>AuthDataSource(locator()));
 
 
