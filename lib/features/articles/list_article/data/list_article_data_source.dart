@@ -4,7 +4,7 @@ import 'package:tech_bloc/core/utils/constants.dart';
 class ListArticleDataSource {
   final Dio dio;
 
-  ListArticleDataSource(this.dio);
+  ListArticleDataSource({required this.dio});
 
   Future<List<dynamic>> getListArticles(String userId) async {
     final response = await dio.get(

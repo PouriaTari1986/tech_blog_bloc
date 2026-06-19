@@ -47,4 +47,14 @@ class GradiantsColors{
        
        
   ];
+
+  static const List<Color> bottomNavTrans =[
+       Color.fromARGB(255, 255, 255, 255),
+       Color.fromARGB(190, 255, 255, 255),
+       Color.fromARGB(0, 255, 255, 255),
+
+       
+       
+       
+  ];
 }

@@ -7,7 +7,7 @@ import 'package:tech_bloc/core/use_cases/use_case.dart';
 import 'package:tech_bloc/features/podcasts/list_podcast/domain/list_podcast_entity.dart';
 import 'package:tech_bloc/features/podcasts/list_podcast/domain/list_podcast_repository.dart';
 
-abstract class ListPodcastUseCases implements UseCase<DataState<List<ListPodcastEntity>>,String> {
+ class ListPodcastUseCases implements UseCase<DataState<List<ListPodcastEntity>>,String> {
 ListPodcastRepository listPodcastRepository;
   ListPodcastUseCases({
     required this.listPodcastRepository,

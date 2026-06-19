@@ -1,6 +1,8 @@
 
 
 class Constants {
+  
+  static const hostDl = "https://techblog.sasansafari.com";
 
   static const baseUrl = "https://techblog.sasansafari.com/Techblog/api/";
 

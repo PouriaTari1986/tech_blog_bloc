@@ -11,7 +11,7 @@ class ListArticleUseCases implements UseCase<DataState<List<ListArticleEntity>>,
 
   ListArticleRepository listArticleRepository;
   ListArticleUseCases(
-     this.listArticleRepository,
+    {required this.listArticleRepository,}
   );
   
   @override

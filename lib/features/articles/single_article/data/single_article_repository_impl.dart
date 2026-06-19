@@ -13,7 +13,7 @@ class SingleArticleRepositoryImpl extends SingleArticleRepository {
 
   SingleArticleDataSource apiProvider;
   SingleArticleRepositoryImpl(
-     this.apiProvider,
+     {required this.apiProvider}
   );
 
 

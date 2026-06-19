@@ -7,7 +7,7 @@ import 'package:tech_bloc/core/utils/constants.dart';
 class ListPodcastDataSource {
 
   final Dio dio;
-  ListPodcastDataSource(this.dio);
+  ListPodcastDataSource({required this.dio});
 
 
   Future<List<dynamic>> listPodcastApiProvider(

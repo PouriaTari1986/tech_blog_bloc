@@ -1,42 +1,38 @@
-
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_bloc/core/utils/routes/routes.dart';
+import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
+import 'package:tech_bloc/injections.dart';
 
-void main() {
+void main() async {
+  await setup();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  runApp( MyApp());
-}
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(statusBarColor: Colors.white),
+  );
+  runApp(
+    BlocProvider(
+      create: (context) => locator<HomeBloc>(),
+      
+      child: MaterialApp.router(
+        theme: ThemeData.light(),
 
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
+        title: 'Localizations Sample App',
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('fa', ''), // Farsi
+        ],
 
-  
-  @override
-  Widget build(BuildContext context) {
-   
-    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
 
-    theme: ThemeData.light(),
-
-      title: 'Localizations Sample App',
-  localizationsDelegates: [
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ],
-  supportedLocales: [
-    Locale('fa',''), // Farsi
-    
-  ],
-
-
-      debugShowCheckedModeBanner: false,
-      routerConfig: routes,
-    );
-  }
-  
+        routerConfig: routes,
+      ),
+    ),
+  );
 }

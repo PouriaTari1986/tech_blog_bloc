@@ -4,7 +4,7 @@ import 'package:tech_bloc/core/utils/constants.dart';
 class SingleArticleDataSource {
   final Dio dio;
 
-  SingleArticleDataSource(this.dio);
+  SingleArticleDataSource({required this.dio});
 
   Future<Map<String, dynamic>> getInfoArticle(
      String articleId,

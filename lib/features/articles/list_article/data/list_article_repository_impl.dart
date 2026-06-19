@@ -9,7 +9,7 @@ class ListArticleRepositoryImpl extends ListArticleRepository {
   final ListArticleDataSource apiProvider;
   final String useId;
 
-  ListArticleRepositoryImpl(this.apiProvider, this.useId);
+  ListArticleRepositoryImpl({required this.apiProvider,required this.useId});
 
   @override
   Future<DataState<List<ListArticleEntity>>> listARepository(String userId) async {

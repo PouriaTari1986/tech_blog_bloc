@@ -11,8 +11,8 @@ import 'package:tech_bloc/features/articles/single_article/domain/single_article
 class SingleArticleUseCases implements UseCase<DataState<SingleArticleEntity>,SingleArticleParams> {
 
   SingleArticleRepository singleArticleRepository;
-  SingleArticleUseCases(
-   this.singleArticleRepository,
+  SingleArticleUseCases( 
+   {required this.singleArticleRepository,}
   );
 
 
