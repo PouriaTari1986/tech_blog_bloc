@@ -8,14 +8,14 @@ class LightTextTheme {
 
   static const TextStyle bannerTextBold = TextStyle(
     fontFamily: 'Dana',
-    fontSize: 15,
+    fontSize: 16,
     color: SolidColors.banerBoldText,
     fontWeight: FontWeight.normal
   );
 
   static const TextStyle bannerTexrNormal = TextStyle(
     fontFamily: 'Dana',
-    fontSize: 20,
+    fontSize: 14,
     color: SolidColors.banerBoldText ,
     fontWeight: FontWeight.normal
   );
@@ -29,7 +29,7 @@ class LightTextTheme {
 
   static const TextStyle elevatedText = TextStyle(
     fontFamily: 'Dana',
-    fontSize: 15,
+    fontSize: 20,
     color: SolidColors.banerBoldText ,
     fontWeight: FontWeight.bold
   );

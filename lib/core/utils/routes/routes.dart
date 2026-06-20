@@ -4,12 +4,11 @@ import 'package:tech_bloc/core/utils/routes/main_shell.dart';
 import 'package:tech_bloc/core/utils/routes/route_names.dart';
 import 'package:tech_bloc/features/articles/list_article/presentation/list_article_bloc/bloc/list_articles_bloc.dart';
 import 'package:tech_bloc/features/articles/list_article/presentation/list_article_pages/list_article_screen.dart';
-import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/authentication_cubit.dart';
+import 'package:tech_bloc/features/authentication/presentation/pages/register_intro_screen.dart';
 import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
 import 'package:tech_bloc/features/home/presentation/home_pages/home_screen.dart';
 import 'package:tech_bloc/features/splash/splash_screen.dart';
-import 'package:tech_bloc/features/user/presentation/login_pages/register_intro_screen.dart';
-import 'package:tech_bloc/features/user/presentation/login_pages/user_screen.dart';
+import 'package:tech_bloc/features/authentication/presentation/pages/user_screen.dart';
 import 'package:tech_bloc/injections.dart';
 
 final routes = GoRouter(
@@ -33,7 +32,6 @@ final routes = GoRouter(
               BlocProvider(
                 create: (_) => locator<HomeBloc>()..add(LoadEvent()),
               ),
-              BlocProvider(create: (_) => locator<AuthCubit>()),
             ],
             child: const HomeScreen(),
           ),
@@ -61,7 +59,7 @@ final routes = GoRouter(
       path: NamedScreen.registerIntro,
       name: NamedScreen.registerIntoName,
 
-      builder: (context, state) => RegisterItroScreen(),
+      builder: (context, state) => RegisterIntroScreen(),
     ),
   ],
 );

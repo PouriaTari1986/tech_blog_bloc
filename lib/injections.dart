@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_bloc/features/articles/list_article/data/list_article_data_source.dart';
 import 'package:tech_bloc/features/articles/list_article/data/list_article_repository_impl.dart';
 import 'package:tech_bloc/features/articles/list_article/domain/list_article_repository.dart';
@@ -10,13 +11,20 @@ import 'package:tech_bloc/features/articles/single_article/data/single_article_r
 import 'package:tech_bloc/features/articles/single_article/domain/single_article_repository.dart';
 import 'package:tech_bloc/features/articles/single_article/domain/single_article_use_cases.dart';
 import 'package:tech_bloc/features/articles/single_article/presentation/single_article_bloc/bloc/article_info_bloc.dart';
-import 'package:tech_bloc/features/authentication/data/data_source/auth_data_source.dart';
-import 'package:tech_bloc/features/authentication/data/data_source/auth_local_data_source.dart';
+import 'package:tech_bloc/features/authentication/data/data_source/api_provider.dart';
 import 'package:tech_bloc/features/authentication/data/repository/auth_repository_impl.dart';
-import 'package:tech_bloc/features/authentication/domain/auth_repository.dart';
-import 'package:tech_bloc/features/authentication/domain/auth_use_case.dart';
-import 'package:tech_bloc/features/authentication/domain/code_use_case.dart';
-import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/authentication_cubit.dart';
+import 'package:tech_bloc/features/authentication/domain/auth_repostory.dart';
+import 'package:tech_bloc/features/authentication/domain/use_cases/get_categories_use_case.dart';
+import 'package:tech_bloc/features/authentication/domain/use_cases/get_tags_use_case.dart';
+import 'package:tech_bloc/features/authentication/domain/use_cases/get_user_use_case.dart';
+import 'package:tech_bloc/features/authentication/domain/use_cases/register_use_case.dart';
+import 'package:tech_bloc/features/authentication/domain/use_cases/verify_use_case.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/interesed/intrerested_cubit.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/register/registe_cubit.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/user/user_cubit.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/verify_code/verify_code_cubit.dart';
+
+
 import 'package:tech_bloc/features/home/data/home_data_source.dart';
 import 'package:tech_bloc/features/home/data/home_repository_impl.dart';
 import 'package:tech_bloc/features/home/domain/home_repository.dart';
@@ -37,11 +45,13 @@ GetIt locator = GetIt.instance;
 
   ///share prefrences
 
+   final prefs = await SharedPreferences.getInstance();
 
-
-  locator.registerLazySingleton<AuthLocalDataSource>(
-    () => AuthLocalDataSource(),
+  locator.registerSingleton<SharedPreferences>(
+    prefs,
   );
+ 
+   
 
 
 
@@ -51,7 +61,8 @@ GetIt locator = GetIt.instance;
   locator.registerSingleton<ListPodcastDataSource>(ListPodcastDataSource(dio: locator()));
   locator.registerFactory<SingleArticleDataSource>(()=>SingleArticleDataSource(dio: locator()));
   locator.registerSingleton<ListArticleDataSource>(ListArticleDataSource(dio: locator()));
-  locator.registerFactory<AuthDataSource>(()=>AuthDataSource(locator()));
+  locator.registerSingleton<AuthApiProvider>(AuthApiProvider(locator()));
+
 
 
   ///repositoris
@@ -62,13 +73,17 @@ GetIt locator = GetIt.instance;
   locator.registerSingleton<AuthRepository>(AuthRepositoryImpl(locator()));
 
 
+
   ///use cases
   locator.registerSingleton<HomeUseCases>(HomeUseCases(homeRepository: locator()));
   locator.registerSingleton<ListPodcastUseCases>(ListPodcastUseCases(listPodcastRepository: locator()));
   locator.registerSingleton<SingleArticleUseCases>(SingleArticleUseCases(singleArticleRepository: locator()));
   locator.registerSingleton<ListArticleUseCases>(ListArticleUseCases(listArticleRepository: locator()));
-  locator.registerSingleton<RegisterEmailUseCase>(RegisterEmailUseCase(locator()));
-  locator.registerSingleton<VerifyCodeUseCase>(VerifyCodeUseCase(locator()));
+  locator.registerSingleton<GetCategoriesUseCase>(GetCategoriesUseCase(repository: locator()));
+  locator.registerSingleton<GetTagsUseCase>(GetTagsUseCase(repository: locator()));
+  locator.registerSingleton<GetUserUseCase>(GetUserUseCase(repository: locator()));
+  locator.registerSingleton<RegisterUseCase>(RegisterUseCase(repository: locator()));
+  locator.registerSingleton<VerifyCodeUseCase>(VerifyCodeUseCase(repository: locator()));
 
 
 
@@ -77,7 +92,11 @@ GetIt locator = GetIt.instance;
   locator.registerFactory<ListPodcatsBloc>(()=>ListPodcatsBloc(locator()));
   locator.registerFactory<ArticleInfoBloc>(()=>ArticleInfoBloc(locator()));
   locator.registerFactory<ListArticlesBloc>(()=>ListArticlesBloc(locator()));
-  locator.registerFactory<AuthCubit>(()=>AuthCubit(locator(), locator(), locator()));
+  locator.registerFactory<InterestsCubit>(()=>InterestsCubit(locator(),locator()));
+  locator.registerFactory<RegisterCubit>(()=>RegisterCubit(locator()));
+  locator.registerFactory<UserCubit>(()=>UserCubit(locator()));
+  locator.registerFactory<VerifyCodeCubit>(()=>VerifyCodeCubit(locator()));
+
   
 
 
