@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tech_bloc/features/authentication/domain/entities/register_entity.dart';
 import 'package:tech_bloc/features/authentication/domain/use_cases/register_use_case.dart';
 
 part 'registe_state.dart';
@@ -18,7 +19,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       final result =
           await registerUseCase(email);
 
-      emit(RegisterSuccess(email: result.toString()));
+      emit(RegisterSuccess(email: result.data!));
     } catch (e) {
       emit(RegisterError(error: e.toString()));
     }

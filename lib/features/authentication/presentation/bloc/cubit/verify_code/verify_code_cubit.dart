@@ -38,7 +38,7 @@ class VerifyCodeCubit
       );
       
 
-      emit(VerifyCodeSuccess(result: result as VerifyCodeEntity));
+      emit(VerifyCodeSuccess(result: result.data!));
 
     } catch (e) {
       emit(

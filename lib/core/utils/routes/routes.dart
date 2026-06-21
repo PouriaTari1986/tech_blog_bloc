@@ -4,7 +4,10 @@ import 'package:tech_bloc/core/utils/routes/main_shell.dart';
 import 'package:tech_bloc/core/utils/routes/route_names.dart';
 import 'package:tech_bloc/features/articles/list_article/presentation/list_article_bloc/bloc/list_articles_bloc.dart';
 import 'package:tech_bloc/features/articles/list_article/presentation/list_article_pages/list_article_screen.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/interesed/intrerested_cubit.dart';
+
 import 'package:tech_bloc/features/authentication/presentation/pages/register_intro_screen.dart';
+import 'package:tech_bloc/features/authentication/presentation/pages/register_screen.dart';
 import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
 import 'package:tech_bloc/features/home/presentation/home_pages/home_screen.dart';
 import 'package:tech_bloc/features/splash/splash_screen.dart';
@@ -59,7 +62,19 @@ final routes = GoRouter(
       path: NamedScreen.registerIntro,
       name: NamedScreen.registerIntoName,
 
-      builder: (context, state) => RegisterIntroScreen(),
+      builder: (context, state) {
+        return RegisterIntroScreen();
+      },
+    ),
+    GoRoute(
+      name: NamedScreen.registerScreenName,
+      path: NamedScreen.registerScreen,
+      builder: (context, state) {
+        return BlocProvider(
+          create: (context) => locator<InterestsCubit>()..loadData(),
+          child: RegisterScreen(),
+        );
+      },
     ),
   ],
 );

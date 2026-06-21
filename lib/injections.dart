@@ -65,6 +65,7 @@ GetIt locator = GetIt.instance;
 
 
 
+
   ///repositoris
   locator.registerSingleton<HomeRepository>(HomeRepositoryImpl(apiProvider: HomeDataSource(dio: locator())));
   locator.registerSingleton<ListPodcastRepository>(ListPodcastRepositoryImpl(apiProvider: ListPodcastDataSource(dio: locator())));

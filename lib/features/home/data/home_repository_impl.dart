@@ -3,7 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:tech_bloc/core/error/error_handler.dart';
 import 'package:tech_bloc/features/home/data/home_data_source.dart';
-import 'package:tech_bloc/features/home/data/home_model.dart';
+import 'package:tech_bloc/features/home/data/models/home_model.dart';
 import 'package:tech_bloc/features/home/domain/home_entities/home_entity.dart';
 import 'package:tech_bloc/features/home/domain/home_repository.dart';
 

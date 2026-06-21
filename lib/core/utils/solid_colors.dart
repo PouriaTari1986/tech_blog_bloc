@@ -26,6 +26,8 @@ class SolidColors {
   static const Color dividerColor = Color.fromARGB(255, 112, 112, 112);
 
   static const Color welocomeColor = Color.fromARGB(255, 107, 107, 107);
+
+  static const Color catsColor = Color.fromARGB(255, 242, 242, 242);
 }
 
 class GradiantsColors{

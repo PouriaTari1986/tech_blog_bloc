@@ -50,6 +50,7 @@ dependencies:
   equatable: ^2.0.8
   flutter_native_splash: ^2.4.7
   flutter_spinkit: ^5.2.2
+  validators: ^3.0.0
 
 
 dev_dependencies:

@@ -23,6 +23,8 @@ abstract class NamedScreen {
 
   static const String registerIntro = "/regiterIntro";
 
+  static const String registerScreen = "/regiterScreen";
+
 
 
 
@@ -46,5 +48,7 @@ abstract class NamedScreen {
   static const String userScreenName = "userScreenName";
 
   static const String registerIntoName = "registerIntoName";
+
+  static const String registerScreenName = "registerScreenName";
 
 }

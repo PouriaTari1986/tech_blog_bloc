@@ -14,7 +14,7 @@ sealed class RegisterState extends Equatable {
 
 
 class RegisterSuccess extends RegisterState {
-final String email;
+final RegisterEntity email;
 
   const RegisterSuccess({required this.email});
 
