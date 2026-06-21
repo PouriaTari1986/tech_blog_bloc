@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_bloc/core/utils/routes/routes.dart';
 import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/register/registe_cubit.dart';
+import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/user/user_cubit.dart';
 import 'package:tech_bloc/features/authentication/presentation/bloc/cubit/verify_code/verify_code_cubit.dart';
 import 'package:tech_bloc/features/home/presentation/home_bloc/bloc/bloc/home_bloc.dart';
 import 'package:tech_bloc/injections.dart';
@@ -23,7 +24,8 @@ void main() async {
        
          providers: [
           BlocProvider(create: (context) => locator<RegisterCubit>(),),
-          BlocProvider(create: (context) => locator<VerifyCodeCubit>(),)
+          BlocProvider(create: (context) => locator<VerifyCodeCubit>(),),
+          BlocProvider(create: (context) => locator<UserCubit>(),)
          ],
         child: MaterialApp.router(
           theme: ThemeData.light(useMaterial3: true),

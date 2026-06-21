@@ -1,4 +1,4 @@
-import 'package:tech_bloc/features/home/domain/home_entities/tags_entity.dart';
+import 'package:tech_bloc/features/home/domain/home_entities/home_tags_entity.dart';
 
 class TagModel extends TagEntity {
   const TagModel({

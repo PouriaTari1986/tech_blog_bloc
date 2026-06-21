@@ -3,7 +3,7 @@ import 'package:tech_bloc/features/authentication/domain/entities/register_entit
 import 'package:tech_bloc/features/authentication/domain/entities/user_entity.dart';
 import 'package:tech_bloc/features/authentication/domain/entities/verify_code_entity.dart';
 import 'package:tech_bloc/features/home/domain/home_entities/categories_entity.dart';
-import 'package:tech_bloc/features/home/domain/home_entities/tags_entity.dart';
+import 'package:tech_bloc/features/home/domain/home_entities/home_tags_entity.dart';
 
 abstract class AuthRepository {
 

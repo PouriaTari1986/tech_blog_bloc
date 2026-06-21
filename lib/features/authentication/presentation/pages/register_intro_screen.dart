@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tech_bloc/core/networks/shared_prefrenes.dart';
 import 'package:tech_bloc/core/utils/const.dart';
 import 'package:tech_bloc/core/utils/light_text_theme.dart';
 import 'package:tech_bloc/core/utils/routes/route_names.dart';
@@ -37,6 +38,7 @@ class _RegisterIntroScreenState extends State<RegisterIntroScreen> {
         BlocListener<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state is RegisterSuccess) {
+             SharedPrefManager.saveEmail(emailController.text);
               context.pop();
               _showVerifyCodeBottomSheet(
                 context, 
@@ -66,37 +68,35 @@ class _RegisterIntroScreenState extends State<RegisterIntroScreen> {
         },)
       ],
       child: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Scaffold(
-            body: Container(
-              width: size.width,
-              color: Colors.white ,
-              child: Column(
-                children: [
-                  SizedBox(height: size.width / 3),
-                  Center(
-                    child: SvgPicture.asset(Assets.images.welcome, height: 150),
+        child: Scaffold(
+          body: Container(
+            width: size.width,
+            color: Colors.white ,
+            child: Column(
+              mainAxisAlignment: .center,
+              children: [
+                
+                Center(
+                  child: SvgPicture.asset(Assets.images.welcome, height: 150),
+                ),
+                SizedBox(height: size.width / 10),
+                RichText(
+                  textAlign: .center,
+                  text: TextSpan(
+                    style: LightTextTheme.welcomeText,
+                    text: AppStrings.welcome,
                   ),
-                  SizedBox(height: size.width / 10),
-                  RichText(
-                    textAlign: .center,
-                    text: TextSpan(
-                      style: LightTextTheme.welcomeText,
-                      text: AppStrings.welcome,
-                    ),
-                  ),
-              
-                  SizedBox(height: size.width / 5),
-                  ElevatedButton(
-                    style: buttomStayle(size),
-                    onPressed: () {
-                      _showEmailBottomSheet(context, size);
-                    },
-                    child: Text(AppStrings.letsGo),
-                  ),
-                ],
-              ),
+                ),
+            
+                SizedBox(height: size.width / 5),
+                ElevatedButton(
+                  style: buttomStayle(size),
+                  onPressed: () {
+                    _showEmailBottomSheet(context, size);
+                  },
+                  child: Text(AppStrings.letsGo),
+                ),
+              ],
             ),
           ),
         ),
@@ -114,7 +114,7 @@ class _RegisterIntroScreenState extends State<RegisterIntroScreen> {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           child: Container(
-            height: size.height / 2.5,
+            height: size.height / 3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),

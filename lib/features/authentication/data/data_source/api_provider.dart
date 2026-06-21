@@ -62,7 +62,7 @@ Future<UserModel> getUser(String userId) async {
     options: Options(
       headers: {
         "authorization":
-            await SharedPrefManager.getToken()
+            "Bearer ${await SharedPrefManager.getToken()}"
       },
     ),
   );

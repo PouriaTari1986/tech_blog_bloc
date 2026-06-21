@@ -8,8 +8,8 @@ class UserLoading extends UserState {}
 
 class UserSuccess extends UserState {
   final UserEntity user;
-
-  UserSuccess(this.user);
+  final String name;
+  UserSuccess(this.user,this.name);
 }
 
 class UserError extends UserState {

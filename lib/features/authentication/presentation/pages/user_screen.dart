@@ -3,24 +3,23 @@
 
 
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_bloc/core/networks/shared_prefrenes.dart';
 import 'package:tech_bloc/core/utils/const.dart';
 import 'package:tech_bloc/core/utils/light_text_theme.dart';
 import 'package:tech_bloc/core/utils/solid_colors.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
 
 class UserScreen extends StatelessWidget {
-   UserScreen({super.key});
-
- final TextEditingController nameCotroller =TextEditingController();
-
- final TextEditingController emailController =TextEditingController();
+    UserScreen({super.key});
 
 
+  final  Future<String?> name = SharedPrefManager.getName();
+  final  Future<String?> email = SharedPrefManager.getEmail();
 
   @override
   Widget build(BuildContext context) {
+
 
     final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
@@ -36,12 +35,7 @@ class UserScreen extends StatelessWidget {
               shape: .circle,
       
             ),
-            child: CachedNetworkImage(
-              imageUrl: "",
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Assets.images.a3899618Png.image(),
-              fit: .cover,
-              ),
+        
               
           ),
           SizedBox(height: size.width/18,),
@@ -62,23 +56,11 @@ class UserScreen extends StatelessWidget {
           SizedBox(height: size.width/18,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width/4),
-            child: TextField(
-              textAlign: .center,
-              controller: nameCotroller,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  
-                ),
-                hintText: AppStrings.nameAndFamily,
-                hintStyle: LightTextTheme.listAuthor,
-                
-              ),
-              
             
-            ),
           ), 
-          Text("pouria.tari1986@gmail.com",style: LightTextTheme.detailText,),
+          Text(name.toString(),style: LightTextTheme.detailText,), 
+          SizedBox(height: 5,),
+          Text(email.toString(),style: LightTextTheme.detailText,),
             
       
           Divider(

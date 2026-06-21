@@ -4,7 +4,7 @@ import 'package:tech_bloc/core/utils/constants.dart';
 import 'package:tech_bloc/core/utils/light_text_theme.dart';
 import 'package:tech_bloc/core/utils/solid_colors.dart';
 import 'package:tech_bloc/features/home/domain/home_entities/poster_entity.dart';
-import 'package:tech_bloc/features/home/domain/home_entities/tags_entity.dart';
+import 'package:tech_bloc/features/home/domain/home_entities/home_tags_entity.dart';
 import 'package:tech_bloc/features/home/domain/home_entities/top_podcasts_entity.dart';
 import 'package:tech_bloc/features/home/domain/home_entities/top_visited_entity.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
@@ -287,3 +287,26 @@ SizedBox homePodcasts(
       ],
     );
   }
+      Widget tagsContainer(String title) {
+        return Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(20),
+                gradient: LinearGradient(
+                  colors: GradiantsColors.tags,
+                  begin: .centerRight,
+                  end: .centerLeft,
+                ),
+              ),
+              child: Row(
+                children: [
+                        Assets.images.a1629506.image(height: 16),
+                  SizedBox(width: 12),
+                  Text(
+                    title,
+                    style: LightTextTheme.bannerTextBold,
+                  ),
+                ],
+              ));
+      }

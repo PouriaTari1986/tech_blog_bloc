@@ -1,10 +1,13 @@
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefManager {
   SharedPrefManager._();
 
-  static const String _tokenKey = 'token';
-  static const String _userIdKey = 'user_id';
+   static const String _tokenKey = 'token';
+   static const String _userIdKey = 'user_id';
+   static const String _emailKey = 'email';
+   static const String _nameKey = 'name';
 
   /// Save Token
   static Future<void> saveToken(String token) async {
@@ -54,4 +57,25 @@ class SharedPrefManager {
     final token = await getToken();
     return token != null && token.isNotEmpty;
   }
+
+  ///email
+  static Future<void> saveEmail(String email)async{
+    final prefs = await SharedPreferences.getInstance();
+     prefs.setString(_emailKey, email);
+  }
+  static Future<String?> getEmail()async{
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_emailKey);
+  }
+
+  ///user name
+  static Future<void> savenName(String name)async{
+    final prefs = await SharedPreferences.getInstance();
+     prefs.setString(_emailKey, name);
+  }
+  static Future<String?> getName()async{
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_nameKey);
+  }
+
 }

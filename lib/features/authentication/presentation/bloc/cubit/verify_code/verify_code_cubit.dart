@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tech_bloc/core/networks/shared_prefrenes.dart';
+
 import 'package:tech_bloc/features/authentication/domain/entities/verify_code_entity.dart';
 import 'package:tech_bloc/features/authentication/domain/use_cases/verify_use_case.dart';
 
@@ -30,6 +31,9 @@ class VerifyCodeCubit
         userId: userId,
         code: code,
       );
+      if (result.data != null) {
+        
+      
 
       await SharedPrefManager.saveToken(
           result.data!.token);
@@ -39,7 +43,10 @@ class VerifyCodeCubit
       
 
       emit(VerifyCodeSuccess(result: result.data!));
-
+      }
+      else{
+        emit(VerifyCodeError(error: result.error!));
+      }
     } catch (e) {
       emit(
         VerifyCodeError(error: e.toString()),
